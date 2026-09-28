@@ -1,120 +1,131 @@
-<div class="container">
-  <hlm-card class="header">
-    <div class="header-row">
-      <div hlmButtonGroup style="flex:1">
-        <button hlmBtn variant="outline">Tundish Sequence</button>
-        <input hlmInput type="text" value="2/10" />
+<div class="flex-row">
+  <div hlmSidebarWrapper style="flex: 1;">
+    <hlm-sidebar>
+      <div hlmSidebarContent>
+        <div hlmSidebarGroup>
+          <div hlmSidebarGroupLabel>Application</div>
+        </div>
       </div>
-      <div hlmButtonGroup style="flex:1">
-        <button hlmBtn variant="outline">Heat Number</button>
-        <input hlmInput type="text" value="92608161" />
+    </hlm-sidebar>
+  </div>
+  <div class="container"  style="flex: 10;">
+    <button hlmSidebarTrigger></button>
+    <hlm-card class="header">
+      <div class="header-row">
+        <div hlmButtonGroup style="flex:1">
+          <button hlmBtn variant="outline">Tundish Sequence</button>
+          <input hlmInput type="text" value="2/10" />
+        </div>
+        <div hlmButtonGroup style="flex:1">
+          <button hlmBtn variant="outline">Heat Number</button>
+          <input hlmInput type="text" value="92608161" />
+        </div>
+        <div hlmButtonGroup style="flex:1">
+          <button hlmBtn variant="outline">Heat Status</button>
+          <input hlmInput type="text" value="LSGC" />
+        </div>
+        <div hlmButtonGroup style="flex:1">
+          <button hlmBtn variant="outline">Steel Grade</button>
+          <input hlmInput type="text" value="3204" />
+        </div>
+        <div hlmButtonGroup style="flex:1">
+          <button hlmBtn variant="outline">CCM Status</button>
+          <input hlmInput type="text" value="Casting On" />
+        </div>
+        <div hlmButtonGroup style="flex:1">
+          <button hlmBtn variant="outline">Ladle No</button>
+          <input hlmInput type="text" value="1" />
+        </div>
+        <div hlmButtonGroup style="flex:1">
+          <button hlmBtn variant="outline">Temperature(C)</button>
+          <input hlmInput type="text" value="1560" />
+        </div>
+        <div hlmButtonGroup style="flex:1">
+          <button hlmBtn variant="outline">Heat Start</button>
+          <input hlmInput type="text" value="11:12" />
+        </div>
       </div>
-      <div hlmButtonGroup style="flex:1">
-        <button hlmBtn variant="outline">Heat Status</button>
-        <input hlmInput type="text" value="LSGC" />
+      <div class="header-row">
+        <div hlmButtonGroup style="flex:1">
+          <button hlmBtn variant="outline">Tundish No</button>
+          <input hlmInput type="text" value="1" />
+        </div>
+        <div hlmButtonGroup style="flex:1">
+          <button hlmBtn variant="outline">Temp Time</button>
+          <input hlmInput type="text" value="11:12:35" />
+        </div>
+        <div hlmButtonGroup style="flex:1">
+          <button hlmBtn variant="outline">Ladle Weight (KG)</button>
+          <input hlmInput type="text" value="180000" />
+        </div>
+        <div hlmButtonGroup style="flex:1">
+          <button hlmBtn variant="outline">Tundishcar No</button>
+          <input hlmInput type="text" value="1" />
+        </div>
+        <div hlmButtonGroup style="flex:1">
+          <button hlmBtn variant="outline">Sequence Number</button>
+          <input hlmInput type="text" value="20220061" />
+        </div>
+        <div hlmButtonGroup style="flex:1">
+          <button hlmBtn variant="outline">Length</button>
+          <input hlmInput type="text" value="12000" />
+        </div>
+        <div hlmButtonGroup style="flex:1">
+          <button hlmBtn variant="outline">Time Until End</button>
+          <input hlmInput type="text" value="11" />
+        </div>
+        <div hlmButtonGroup style="flex:1">
+          <button hlmBtn variant="outline">Dim</button>
+          <input hlmInput type="text" value="203*1250" />
+        </div>
       </div>
-      <div hlmButtonGroup style="flex:1">
-        <button hlmBtn variant="outline">Steel Grade</button>
-        <input hlmInput type="text" value="3204" />
+    </hlm-card>
+    <hlm-card class="actions">
+      <button hlmBtn variant="outline" size="icon" class="button-warning">
+        <ng-icon name="lucidePencil" />
+      </button>
+      <button hlmBtn variant="outline" size="icon" class="button-success">
+        <ng-icon name="lucideCheck" />
+      </button>
+      <button hlmBtn variant="outline" size="icon" class="button-danger">
+        <ng-icon name="lucideBan" />
+      </button>
+      <button hlmBtn variant="outline" class="button-primary">Plan Request</button>
+      <div class="action-inputs" style="flex:1">
+        <div hlmButtonGroup>
+          <button hlmBtn variant="outline">Actual Speed</button>
+          <input hlmInput type="text" value="5" />
+        </div>
+        <div hlmButtonGroup>
+          <button hlmBtn variant="outline">Len L1</button>
+          <input hlmInput type="text" value="1525399" />
+        </div>
+        <div hlmButtonGroup>
+          <button hlmBtn variant="outline">Len L2</button>
+          <input hlmInput type="text" value="1521459" />
+        </div>
       </div>
-      <div hlmButtonGroup style="flex:1">
-        <button hlmBtn variant="outline">CCM Status</button>
-        <input hlmInput type="text" value="Casting On" />
-      </div>
-      <div hlmButtonGroup style="flex:1">
-        <button hlmBtn variant="outline">Ladle No</button>
-        <input hlmInput type="text" value="1" />
-      </div>
-      <div hlmButtonGroup style="flex:1">
-        <button hlmBtn variant="outline">Temperature(C)</button>
-        <input hlmInput type="text" value="1560" />
-      </div>
-      <div hlmButtonGroup style="flex:1">
-        <button hlmBtn variant="outline">Heat Start</button>
-        <input hlmInput type="text" value="11:12" />
-      </div>
-    </div>
-    <div class="header-row">
-      <div hlmButtonGroup style="flex:1">
-        <button hlmBtn variant="outline">Tundish No</button>
-        <input hlmInput type="text" value="1" />
-      </div>
-      <div hlmButtonGroup style="flex:1">
-        <button hlmBtn variant="outline">Temp Time</button>
-        <input hlmInput type="text" value="11:12:35" />
-      </div>
-      <div hlmButtonGroup style="flex:1">
-        <button hlmBtn variant="outline">Ladle Weight (KG)</button>
-        <input hlmInput type="text" value="180000" />
-      </div>
-      <div hlmButtonGroup style="flex:1">
-        <button hlmBtn variant="outline">Tundishcar No</button>
-        <input hlmInput type="text" value="1" />
-      </div>
-      <div hlmButtonGroup style="flex:1">
-        <button hlmBtn variant="outline">Sequence Number</button>
-        <input hlmInput type="text" value="20220061" />
-      </div>
-      <div hlmButtonGroup style="flex:1">
-        <button hlmBtn variant="outline">Length</button>
-        <input hlmInput type="text" value="12000" />
-      </div>
-      <div hlmButtonGroup style="flex:1">
-        <button hlmBtn variant="outline">Time Until End</button>
-        <input hlmInput type="text" value="11" />
-      </div>
-      <div hlmButtonGroup style="flex:1">
-        <button hlmBtn variant="outline">Dim</button>
-        <input hlmInput type="text" value="203*1250" />
-      </div>
-    </div>
-  </hlm-card>
-  <hlm-card class="actions">
-    <button hlmBtn variant="outline" size="icon" class="button-warning">
-      <ng-icon name="lucidePencil" />
-    </button>
-    <button hlmBtn variant="outline" size="icon" class="button-success">
-      <ng-icon name="lucideCheck" />
-    </button>
-    <button hlmBtn variant="outline" size="icon" class="button-danger">
-      <ng-icon name="lucideBan" />
-    </button>
-    <button hlmBtn variant="outline" class="button-primary">Plan Request</button>
-    <div class="action-inputs" style="flex:1">
-      <div hlmButtonGroup>
-        <button hlmBtn variant="outline">Actual Speed</button>
-        <input hlmInput type="text" value="5" />
-      </div>
-      <div hlmButtonGroup>
-        <button hlmBtn variant="outline">Len L1</button>
-        <input hlmInput type="text" value="1525399" />
-      </div>
-      <div hlmButtonGroup>
-        <button hlmBtn variant="outline">Len L2</button>
-        <input hlmInput type="text" value="1521459" />
-      </div>
-    </div>
 
-  </hlm-card>
+    </hlm-card>
 
-  <div class="flex-row">
-    <div class="flex-column" style="flex:10;row-gap: var(--gap);">
-      <hlm-card>
-        <hlm-card-header>
-          <h1 style="font-size: 1rem;">Planned Heats</h1>
-          <hlm-separator />
-        </hlm-card-header>
-        <div hlmTableContainer style="max-height: 150px;overflow-y: scroll;">
-          <table hlmTable >
-            <thead hlmTableHeader class="sticky top-0 z-10" style="background-color: var(--table-header-background);">
-              <tr hlmTableRow>
-                @for (column of _plannedHeatsColumns; track column) {
+    <div class="flex-row">
+      <div class="flex-column" style="flex:10;row-gap: var(--gap);">
+        <hlm-card>
+          <hlm-card-header>
+            <h1 style="font-size: 1rem;">Planned Heats</h1>
+            <hlm-separator />
+          </hlm-card-header>
+          <div hlmTableContainer style="max-height: 150px;overflow-y: scroll;">
+            <table hlmTable>
+              <thead hlmTableHeader class="sticky top-0 z-10" style="background-color: var(--table-header-background);">
+                <tr hlmTableRow>
+                  @for (column of _plannedHeatsColumns; track column) {
                   <th hlmTableHead>{{ column }}</th>
-                }
-              </tr>
-            </thead>
-            <tbody hlmTableBody>
-              @for (row of _plannedHeatsRows; track row) {
+                  }
+                </tr>
+              </thead>
+              <tbody hlmTableBody>
+                @for (row of _plannedHeatsRows; track row) {
                 <tr hlmTableRow>
                   <td hlmTableCell>{{ row.heatNumber }}</td>
                   <td hlmTableCell>{{ row.heatStatus }}</td>
@@ -130,22 +141,22 @@
                   <td hlmTableCell><button hlmBtn variant="outline" [disabled]="true">Target Temp</button></td>
                   <td hlmTableCell><button hlmBtn variant="outline">Analysis Request</button></td>
                 </tr>
-              }
-            </tbody>
-          </table>
-        </div>
-      </hlm-card>
-      <div class="flex-row" style="column-gap: var(--gap);">
-        <hlm-card style="flex:1">
-          <hlm-card-header>
-            <h1 style="font-size: 1rem;">Actions</h1>
-            <hlm-separator />
-          </hlm-card-header>
+                }
+              </tbody>
+            </table>
+          </div>
+        </hlm-card>
+        <div class="flex-row" style="column-gap: var(--gap);">
+          <hlm-card style="flex:1">
+            <hlm-card-header>
+              <h1 style="font-size: 1rem;">Actions</h1>
+              <hlm-separator />
+            </hlm-card-header>
             <div class="flex-column" style="row-gap: var(--gap);padding: var(--gap);">
               <div class="flex-row" style="column-gap: var(--gap);">
                 <hlm-select style="flex:1">
                   <hlm-select-trigger>
-                    <hlm-select-value placeholder="Ladle No"/>
+                    <hlm-select-value placeholder="Ladle No" />
                   </hlm-select-trigger>
                   <hlm-select-content *hlmSelectPortal>
                     <hlm-select-group>
@@ -172,31 +183,32 @@
               </div>
               <button hlmBtn variant="outline" class="button-danger">Reset Sequence</button>
             </div>
-          
-        </hlm-card>
-        <hlm-card style="flex:4">
-          <hlm-card-header>
-            <div class="flex-row" style="justify-content: space-between;">
-              <h1 style="font-size: 1rem;">Sequence Heats</h1>
-              <label class="flex items-center" hlmLabel>
-                <hlm-switch class="mr-2" />
-                Go on Current Heat
-              </label>
-            </div>
-            
-            <hlm-separator />
-          </hlm-card-header>
-          <div hlmTableContainer style="max-height: 150px;overflow-y: scroll;">
-            <table hlmTable >
-              <thead hlmTableHeader class="sticky top-0 z-10" style="background-color: var(--table-header-background);">
-                <tr hlmTableRow>
-                  @for (column of _sequenceHeatsColumns; track column) {
+
+          </hlm-card>
+          <hlm-card style="flex:4">
+            <hlm-card-header>
+              <div class="flex-row" style="justify-content: space-between;">
+                <h1 style="font-size: 1rem;">Sequence Heats</h1>
+                <label class="flex items-center" hlmLabel>
+                  <hlm-switch class="mr-2" />
+                  Go on Current Heat
+                </label>
+              </div>
+
+              <hlm-separator />
+            </hlm-card-header>
+            <div hlmTableContainer style="max-height: 150px;overflow-y: scroll;">
+              <table hlmTable>
+                <thead hlmTableHeader class="sticky top-0 z-10"
+                  style="background-color: var(--table-header-background);">
+                  <tr hlmTableRow>
+                    @for (column of _sequenceHeatsColumns; track column) {
                     <th hlmTableHead>{{ column }}</th>
-                  }
-                </tr>
-              </thead>
-              <tbody hlmTableBody>
-                @for (row of _sequenceHeatsRows; track row;let i = $index) {
+                    }
+                  </tr>
+                </thead>
+                <tbody hlmTableBody>
+                  @for (row of _sequenceHeatsRows; track row;let i = $index) {
                   <tr hlmTableRow [class.table-row-selected]="i == 1">
                     <td hlmTableCell>{{ row.heatNumber }}</td>
                     <td hlmTableCell>{{ row.heatStart }}</td>
@@ -206,88 +218,91 @@
                     <td hlmTableCell>{{ row.seqOfTotalSeq }}</td>
                     <td hlmTableCell>{{ row.weightHSTS }}</td>
                     <td hlmTableCell>{{ row.steelGrade }}</td>
-                    <td hlmTableCell><button hlmBtn variant="outline" [class.table-row-selected]="i == 1">MIS Info</button></td>
-                    <td hlmTableCell><button hlmBtn variant="outline" [class.table-row-selected]="i == 1">Default Heat</button></td>
+                    <td hlmTableCell><button hlmBtn variant="outline" [class.table-row-selected]="i == 1">MIS
+                        Info</button></td>
+                    <td hlmTableCell><button hlmBtn variant="outline" [class.table-row-selected]="i == 1">Default
+                        Heat</button></td>
                   </tr>
-                }
-              </tbody>
-            </table>
-          </div>
-        </hlm-card>
+                  }
+                </tbody>
+              </table>
+            </div>
+          </hlm-card>
+        </div>
+      </div>
+      <div class="flex-column" style="flex:1;align-items: center;">
+        <label hlmLabel for="volume">Ladle 500 Ton</label>
+        <hlm-slider id="volume" [value]="[50]" [showTicks]="true" [disabled]="true" orientation="vertical" />
+
       </div>
     </div>
-    <div class="flex-column" style="flex:1;align-items: center;">
-      <label hlmLabel for="volume">Ladle 500 Ton</label>
-			<hlm-slider id="volume" [value]="[50]" [showTicks]="true" [disabled]="true" orientation="vertical"/>
-      
-    </div>
+    <hlm-card class="header">
+      <div class="header-row">
+        <div hlmButtonGroup style="flex:1">
+          <button hlmBtn variant="outline">Heat Number</button>
+          <input hlmInput type="text" value="92608161" />
+        </div>
+        <div hlmButtonGroup style="flex:1">
+          <button hlmBtn variant="outline">Tundish No</button>
+          <input hlmInput type="text" value="2" />
+        </div>
+        <div hlmButtonGroup style="flex:1">
+          <button hlmBtn variant="outline">Ladle No</button>
+          <input hlmInput type="text" value="1" />
+        </div>
+        <div hlmButtonGroup style="flex:1">
+          <button hlmBtn variant="outline">Ladle Rem Weight</button>
+          <input hlmInput type="text" value="180000" />
+        </div>
+        <div hlmButtonGroup style="flex:1">
+          <button hlmBtn variant="outline">Cast Len LSGO</button>
+          <input hlmInput type="text" value="0" />
+        </div>
+        <div hlmButtonGroup style="flex:1">
+          <button hlmBtn variant="outline">Cast Len LSGC</button>
+          <input hlmInput type="text" value="1520834" />
+        </div>
+        <div hlmButtonGroup style="flex:1">
+          <button hlmBtn variant="outline">Heat Cast Len Str</button>
+          <input hlmInput type="text" value="-" />
+        </div>
+      </div>
+      <div class="header-row">
+        <div hlmButtonGroup style="flex:1">
+          <button hlmBtn variant="outline">Tund Temp/Time 1</button>
+          <input hlmInput type="text" value="1560/11:12:35" />
+        </div>
+        <div hlmButtonGroup style="flex:1">
+          <button hlmBtn variant="outline">Tund Temp/Time 2</button>
+          <input hlmInput type="text" value="1560/11:12:35" />
+        </div>
+        <div hlmButtonGroup style="flex:1">
+          <button hlmBtn variant="outline">Tund Temp/Time 3</button>
+          <input hlmInput type="text" value="1560/11:12:35" />
+        </div>
+        <div hlmButtonGroup style="flex:1">
+          <button hlmBtn variant="outline">Tund Temp/Time 4</button>
+          <input hlmInput type="text" value="1560/11:12:35" />
+        </div>
+      </div>
+      <div class="header-row">
+        <div hlmButtonGroup style="flex:1">
+          <button hlmBtn variant="outline">Tund Temp/Time 5</button>
+          <input hlmInput type="text" value="1560/11:12:35" />
+        </div>
+        <div hlmButtonGroup style="flex:1">
+          <button hlmBtn variant="outline">Tund Temp/Time 6</button>
+          <input hlmInput type="text" value="1560/11:12:35" />
+        </div>
+        <div hlmButtonGroup style="flex:1">
+          <button hlmBtn variant="outline">Tund Temp/Time 7</button>
+          <input hlmInput type="text" value="1560/11:12:35" />
+        </div>
+        <div hlmButtonGroup style="flex:1">
+          <button hlmBtn variant="outline">Tund Temp/Time 8</button>
+          <input hlmInput type="text" value="1560/11:12:35" />
+        </div>
+      </div>
+    </hlm-card>
   </div>
-  <hlm-card class="header">
-    <div class="header-row">
-      <div hlmButtonGroup style="flex:1">
-        <button hlmBtn variant="outline">Heat Number</button>
-        <input hlmInput type="text" value="92608161" />
-      </div>
-      <div hlmButtonGroup style="flex:1">
-        <button hlmBtn variant="outline">Tundish No</button>
-        <input hlmInput type="text" value="2" />
-      </div>
-      <div hlmButtonGroup style="flex:1">
-        <button hlmBtn variant="outline">Ladle No</button>
-        <input hlmInput type="text" value="1" />
-      </div>
-      <div hlmButtonGroup style="flex:1">
-        <button hlmBtn variant="outline">Ladle Rem Weight</button>
-        <input hlmInput type="text" value="180000" />
-      </div>
-      <div hlmButtonGroup style="flex:1">
-        <button hlmBtn variant="outline">Cast Len LSGO</button>
-        <input hlmInput type="text" value="0" />
-      </div>
-      <div hlmButtonGroup style="flex:1">
-        <button hlmBtn variant="outline">Cast Len LSGC</button>
-        <input hlmInput type="text" value="1520834" />
-      </div>
-      <div hlmButtonGroup style="flex:1">
-        <button hlmBtn variant="outline">Heat Cast Len Str</button>
-        <input hlmInput type="text" value="-" />
-      </div>
-    </div>
-    <div class="header-row">
-      <div hlmButtonGroup style="flex:1">
-        <button hlmBtn variant="outline">Tund Temp/Time 1</button>
-        <input hlmInput type="text" value="1560/11:12:35" />
-      </div>
-      <div hlmButtonGroup style="flex:1">
-        <button hlmBtn variant="outline">Tund Temp/Time 2</button>
-        <input hlmInput type="text" value="1560/11:12:35" />
-      </div>
-      <div hlmButtonGroup style="flex:1">
-        <button hlmBtn variant="outline">Tund Temp/Time 3</button>
-        <input hlmInput type="text" value="1560/11:12:35" />
-      </div>
-      <div hlmButtonGroup style="flex:1">
-        <button hlmBtn variant="outline">Tund Temp/Time 4</button>
-        <input hlmInput type="text" value="1560/11:12:35" />
-      </div>
-    </div>
-    <div class="header-row">
-      <div hlmButtonGroup style="flex:1">
-        <button hlmBtn variant="outline">Tund Temp/Time 5</button>
-        <input hlmInput type="text" value="1560/11:12:35" />
-      </div>
-      <div hlmButtonGroup style="flex:1">
-        <button hlmBtn variant="outline">Tund Temp/Time 6</button>
-        <input hlmInput type="text" value="1560/11:12:35" />
-      </div>
-      <div hlmButtonGroup style="flex:1">
-        <button hlmBtn variant="outline">Tund Temp/Time 7</button>
-        <input hlmInput type="text" value="1560/11:12:35" />
-      </div>
-      <div hlmButtonGroup style="flex:1">
-        <button hlmBtn variant="outline">Tund Temp/Time 8</button>
-        <input hlmInput type="text" value="1560/11:12:35" />
-      </div>
-    </div>
-  </hlm-card>
 </div>

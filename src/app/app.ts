@@ -14,6 +14,7 @@ import { HlmSliderImports } from '@spartan-ng/helm/slider';
 import { HlmSeparatorImports } from '@spartan-ng/helm/separator';
 import { HlmSwitch } from '@spartan-ng/helm/switch';
 import { HlmLabel } from '@spartan-ng/helm/label';
+import { HlmSidebarImports } from '@spartan-ng/helm/sidebar';
 
 @Component({
   imports: [
@@ -28,7 +29,8 @@ import { HlmLabel } from '@spartan-ng/helm/label';
     HlmCard,
 	HlmSliderImports,
 	HlmSeparatorImports,
-	HlmLabel, HlmSwitch
+	HlmLabel, HlmSwitch,
+	HlmSidebarImports
 ],
   providers: [provideIcons({ lucidePencil, lucideCheck, lucideBan })],
   selector: 'app-root',
