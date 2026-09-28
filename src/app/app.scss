@@ -1,0 +1,67 @@
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  column-gap: var(--gap);
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  row-gap: var(--gap);
+}
+
+.flex-row{
+  @include flex-row;
+}
+
+.flex-column{
+  @include flex-column;
+}
+
+.flex-padding{
+  padding: var(--gap);
+}
+
+.container {
+  @include flex-column;
+  padding: var(--gap);
+  max-width: 100%;
+  * {
+    font-size: 1rem;
+  }
+  ng-icon {
+    font-size: 1rem;
+  }
+  div[hlmButtonGroup] * {
+    flex: 1;
+    text-align: center;
+  }
+  
+}
+.header {
+  padding: var(--gap);
+  @include flex-column;
+  &-row {
+    @include flex-row;
+  }
+}
+.actions {
+  padding: var(--gap);
+  @include flex-row;
+}
+.action-inputs{
+  @include flex-row;
+  justify-content: flex-end;
+}
+table{
+    th,td{
+        text-align: center;
+        padding: 0.2rem;
+        height: 0;
+    }
+    tr{
+        border-color: var(--border);
+    }
+}
