@@ -71,3 +71,7 @@ table{
 div[hlmSidebarWrapper]{
   width: fit-content;
 }
+
+::ng-deep tanstack-chart .ts-chart{
+  outline: none !important;
+}

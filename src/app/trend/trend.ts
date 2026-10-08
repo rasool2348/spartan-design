@@ -1,9 +1,10 @@
 import { Component, signal } from '@angular/core';
-import { NgIcon, provideIcons } from '@ng-icons/core';
+import { provideIcons } from '@ng-icons/core';
 import { lucideBan, lucideCheck, lucidePencil } from '@ng-icons/lucide';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { HlmButtonGroupImports } from '@spartan-ng/helm/button-group';
 import { HlmCard, HlmCardImports } from '@spartan-ng/helm/card';
+import { HLM_CHART_THEME, HlmChartImports, hlmChartTooltip } from '@spartan-ng/helm/chart';
 import { HlmFieldImports } from '@spartan-ng/helm/field';
 import { HlmInputImports } from '@spartan-ng/helm/input';
 import { HlmLabel } from '@spartan-ng/helm/label';
@@ -11,8 +12,11 @@ import { HlmSelectImports } from '@spartan-ng/helm/select';
 import { HlmSeparatorImports } from '@spartan-ng/helm/separator';
 import { HlmSidebarImports } from '@spartan-ng/helm/sidebar';
 import { HlmSliderImports } from '@spartan-ng/helm/slider';
-import { HlmSwitch } from '@spartan-ng/helm/switch';
 import { HlmTableImports } from '@spartan-ng/helm/table';
+import { barY, colorLegend, defineChart, lineY } from '@tanstack/charts';
+import { scaleLinear } from '@tanstack/charts/scales/linear';
+import { scalePoint } from '@tanstack/charts/scales/point';
+import { scaleBand } from '@tanstack/charts/scales/band';
 
 @Component({
   imports: [
@@ -21,15 +25,13 @@ import { HlmTableImports } from '@spartan-ng/helm/table';
     HlmFieldImports,
     HlmCardImports,
     HlmButtonImports,
-    NgIcon,
     HlmButtonGroupImports,
     HlmSelectImports,
     HlmCard,
     HlmSliderImports,
     HlmSeparatorImports,
-    HlmLabel,
-    HlmSwitch,
     HlmSidebarImports,
+    HlmChartImports,
   ],
   providers: [provideIcons({ lucidePencil, lucideCheck, lucideBan })],
   selector: 'app-trend',
@@ -38,162 +40,243 @@ import { HlmTableImports } from '@spartan-ng/helm/table';
 })
 export class Trend {
   protected readonly title = signal('angular-22');
-  protected readonly _plannedHeatsColumns = [
-    'Heat Number',
-    'Heat Status',
-    'Stage Name',
-    'Ladle Empty Weight',
-    'Weight HSTS',
-    'Ladle Code',
-    'Steel Grade',
-    'Seq of Total Seq',
-    'Length',
-    'Width',
-    'Thickness',
-    'Target Temp',
-    'Analysis Request',
-  ];
-  protected readonly _plannedHeatsRows = [
+  protected readonly _temperaturesColumns = ['Temperature', 'Temperature Time'];
+  protected readonly _temperaturesRows = [
     {
-      heatNumber: '92608161',
-      heatStatus: 'LSGC',
-      stageName: 'Stage 1',
-      ladleEmptyWeight: '100000',
-      weightHSTS: '100000',
-      ladleCode: '100000',
-      steelGrade: '100000',
-      seqOfTotalSeq: '100000',
-      length: '100000',
-      width: '100000',
-      thickness: '100000',
-      targetTemp: '100000',
-      analysisRequest: '100000',
+      temperature: '1000',
+      temperatureTime: '2026-01-01 10:00:00',
     },
     {
-      heatNumber: '92608161',
-      heatStatus: 'LSGC',
-      stageName: 'Stage 1',
-      ladleEmptyWeight: '100000',
-      weightHSTS: '100000',
-      ladleCode: '100000',
-      steelGrade: '100000',
-      seqOfTotalSeq: '100000',
-      length: '100000',
-      width: '100000',
-      thickness: '100000',
-      targetTemp: '100000',
-      analysisRequest: '100000',
+      temperature: '1000',
+      temperatureTime: '2026-01-01 10:00:00',
     },
     {
-      heatNumber: '92608161',
-      heatStatus: 'LSGC',
-      stageName: 'Stage 1',
-      ladleEmptyWeight: '100000',
-      weightHSTS: '100000',
-      ladleCode: '100000',
-      steelGrade: '100000',
-      seqOfTotalSeq: '100000',
-      length: '100000',
-      width: '100000',
-      thickness: '100000',
-      targetTemp: '100000',
-      analysisRequest: '100000',
+      temperature: '1000',
+      temperatureTime: '2026-01-01 10:00:00',
     },
     {
-      heatNumber: '92608161',
-      heatStatus: 'LSGC',
-      stageName: 'Stage 1',
-      ladleEmptyWeight: '100000',
-      weightHSTS: '100000',
-      ladleCode: '100000',
-      steelGrade: '100000',
-      seqOfTotalSeq: '100000',
-      length: '100000',
-      width: '100000',
-      thickness: '100000',
-      targetTemp: '100000',
-      analysisRequest: '100000',
+      temperature: '1000',
+      temperatureTime: '2026-01-01 10:00:00',
     },
     {
-      heatNumber: '92608161',
-      heatStatus: 'LSGC',
-      stageName: 'Stage 1',
-      ladleEmptyWeight: '100000',
-      weightHSTS: '100000',
-      ladleCode: '100000',
-      steelGrade: '100000',
-      seqOfTotalSeq: '100000',
-      length: '100000',
-      width: '100000',
-      thickness: '100000',
-      targetTemp: '100000',
-      analysisRequest: '100000',
+      temperature: '1000',
+      temperatureTime: '2026-01-01 10:00:00',
+    },
+    {
+      temperature: '1000',
+      temperatureTime: '2026-01-01 10:00:00',
+    },
+    {
+      temperature: '1000',
+      temperatureTime: '2026-01-01 10:00:00',
+    },
+    {
+      temperature: '1000',
+      temperatureTime: '2026-01-01 10:00:00',
+    },
+    {
+      temperature: '1000',
+      temperatureTime: '2026-01-01 10:00:00',
+    },
+    {
+      temperature: '1000',
+      temperatureTime: '2026-01-01 10:00:00',
+    },
+    {
+      temperature: '1200',
+      temperatureTime: '2026-01-01 11:00:00',
+    },
+    {
+      temperature: '1300',
+      temperatureTime: '2026-01-01 12:00:00',
+    },
+    {
+      temperature: '1400',
+      temperatureTime: '2026-01-01 13:00:00',
+    },
+    {
+      temperature: '1500',
+      temperatureTime: '2026-01-01 14:00:00',
     },
   ];
-  protected readonly _sequenceHeatsColumns = [
-    'Heat Number',
-    'Heat Start',
-    'Heat End',
-    'Ladle Arrival',
-    'Weight L1',
-    'Seq of Total Seq',
-    'Weight HSTS',
-    'Steel Grade',
-    'MIS Info',
-    'Default Heat',
-  ];
-  protected readonly _sequenceHeatsRows = [
+  protected readonly _chartData = [
     {
-      heatNumber: '92608161',
-      heatStart: '2026-08-16 11:12:31',
-      heatEnd: '2026-08-16 11:12:31',
-      ladleArrival: '92608161',
-      weightL1: '92608161',
-      seqOfTotalSeq: '92608161',
-      weightHSTS: '92608161',
-      steelGrade: '92608161',
+      time: '2026-01-01 10:00:00',
+      values: 1500,
+      channel: 'Tundish Weight',
     },
     {
-      heatNumber: '92608161',
-      heatStart: '2026-08-16 11:12:31',
-      heatEnd: '2026-08-16 11:12:31',
-      ladleArrival: '92608161',
-      weightL1: '92608161',
-      seqOfTotalSeq: '92608161',
-      weightHSTS: '92608161',
-      steelGrade: '92608161',
+      time: '2026-01-01 10:00:00',
+      values: 1500,
+      channel: 'Tundish Temp',
     },
     {
-      heatNumber: '92608161',
-      heatStart: '2026-08-16 11:12:31',
-      heatEnd: '2026-08-16 11:12:31',
-      ladleArrival: '92608161',
-      weightL1: '92608161',
-      seqOfTotalSeq: '92608161',
-      weightHSTS: '92608161',
-      steelGrade: '92608161',
+      time: '2026-01-01 12:00:00',
+      values: 1400,
+      channel: 'Tundish Weight',
     },
     {
-      heatNumber: '92608161',
-      heatStart: '2026-08-16 11:12:31',
-      heatEnd: '2026-08-16 11:12:31',
-      ladleArrival: '92608161',
-      weightL1: '92608161',
-      seqOfTotalSeq: '92608161',
-      weightHSTS: '92608161',
-      steelGrade: '92608161',
+      time: '2026-01-01 12:00:00',
+      values: 1600,
+      channel: 'Tundish Temp',
     },
     {
-      heatNumber: '92608161',
-      heatStart: '2026-08-16 11:12:31',
-      heatEnd: '2026-08-16 11:12:31',
-      ladleArrival: '92608161',
-      weightL1: '92608161',
-      seqOfTotalSeq: '92608161',
-      weightHSTS: '92608161',
-      steelGrade: '92608161',
+      time: '2026-01-01 13:00:00',
+      values: 1300,
+      channel: 'Tundish Weight',
+    },
+    {
+      time: '2026-01-01 13:00:00',
+      values: 1550,
+      channel: 'Tundish Temp',
+    },
+    {
+      time: '2026-01-01 16:00:00',
+      values: 1000,
+      channel: 'Tundish Weight',
+    },
+    {
+      time: '2026-01-01 16:00:00',
+      values: 1640,
+      channel: 'Tundish Temp',
     },
   ];
+  protected readonly _chartDataBar = [
+    {
+      time: '2026-01-01 10:00:00',
+      value: 1550,
+    },
+    {
+      time: '2026-01-01 11:00:00',
+      value: 1600,
+    },
+    {
+      time: '2026-01-01 12:00:00',
+      value: 1500,
+    },
+    {
+      time: '2026-01-01 13:00:00',
+      value: 1400,
+    },
+    {
+      time: '2026-01-01 14:00:00',
+      value: 1350,
+    },
+    {
+      time: '2026-01-01 15:00:00',
+      value: 1500,
+    },
+    {
+      time: '2026-01-01 15:10:00',
+      value: 1550,
+    },
+    {
+      time: '2026-01-01 15:20:00',
+      value: 1575,
+    },
+    {
+      time: '2026-01-01 15:30:00',
+      value: 1425,
+    },
+    {
+      time: '2026-01-01 15:40:00',
+      value: 1300,
+    },
+    {
+      time: '2026-01-01 15:50:00',
+      value: 1500,
+    },
+    {
+      time: '2026-01-01 16:00:00',
+      value: 1380,
+    },
+    {
+      time: '2026-01-01 16:10:00',
+      value: 1200,
+    },
+    {
+      time: '2026-01-01 16:20:00',
+      value: 1460,
+    },
+    {
+      time: '2026-01-01 16:30:00',
+      value: 1420,
+    },
+    {
+      time: '2026-01-01 16:40:00',
+      value: 1500,
+    },
+  ];
+  protected readonly _chartOptions = {
+    definition: defineChart(
+      {
+        marks: [
+          lineY(this._chartData, {
+            x: 'time',
+            y: 'values',
+            z: 'channel',
+            points: true,
+            strokeWidth: 2.5,
+          }),
+        ],
+        scales: {
+          x: {
+            scale: () => scalePoint<string>().padding(0.2),
+            axis: {
+              label: 'Time',
+              line: true,
+              ticks: {
+                size: 10,
+                padding: 10,
+                format: (value) =>
+                  value.split(' ')[1].split(':')[0] + ' ' + value.split(' ')[1].split(':')[1],
+              },
+            },
+          },
+          y: { scale: scaleLinear, nice: true, grid: true, axis: { label: 'Values' } },
+        },
+        color: {
+          domain: ['Tunish Weight', 'Tundish Temp'],
+          legend: colorLegend({ label: 'Tundish' }),
+        },
+        theme: HLM_CHART_THEME,
+      },
+      { focus: 'group-x', tooltip: hlmChartTooltip() },
+    ),
+    ariaLabel: 'Tundish',
+  };
+  protected readonly _chartOptionsBar = {
+    definition: defineChart(
+      {
+        marks: [barY(this._chartDataBar, { x: 'time', y: 'value', fill: 'var(--chart-5)' })],
+        scales: {
+          x: {
+            scale: () => scaleBand<string>().paddingInner(0.2).paddingOuter(0.1),
+            axis: {
+              label: 'Time',
+              line: false,
+              ticks: {
+                size: 10,
+                padding: 10,
+                format: (value) =>
+                  value.split(' ')[1].split(':')[0] + ' ' + value.split(' ')[1].split(':')[1],
+              },
+              tickLabels: { thin: { minGap: 1 } },
+            },
+          },
+          y: { scale: scaleLinear, nice: true, grid: true, axis: { label: 'Temperatures' } },
+        },
+        color: {
+          domain: ['Tundish Temp'],
+          legend: colorLegend({ label: 'Temperature' }),
+        },
+        theme: HLM_CHART_THEME,
+      },
+      { focus: 'group-x', tooltip: hlmChartTooltip() },
+    ),
+    ariaLabel: 'Tundish',
+    height: 700,
+  };
 
   protected getKeys(obj: any): string[] {
     return Object.keys(obj);
