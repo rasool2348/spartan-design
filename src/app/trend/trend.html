@@ -1,4 +1,4 @@
-<div class="flex-row">
+<div class="page flex-row">
   <div hlmSidebarWrapper>
     <hlm-sidebar>
       <div hlmSidebarContent>
@@ -8,16 +8,16 @@
       </div>
     </hlm-sidebar>
   </div>
-  <div class="container" style="flex:1">
+  <div class="container">
     <button hlmSidebarTrigger></button>
-    <div class="flex-row" style="height: 100%;">
-      <div class="flex-column" style="flex:1;row-gap: var(--gap);height: 100%;">
-        <hlm-card class="flex-column" style="flex:1">
+    <div class="content flex-row">
+      <div class="content-left flex-column">
+        <hlm-card class="panel flex-column">
           <hlm-card-header>
             <h1 style="font-size: 1rem;">Temperatures</h1>
             <hlm-separator />
           </hlm-card-header>
-          <div hlmTableContainer style="overflow-y: auto;max-height: 100%;">
+          <div hlmTableContainer class="panel-body table-scroll">
             <table hlmTable>
               <thead hlmTableHeader class="sticky top-0 z-10" style="background-color: var(--table-header-background);">
                 <tr hlmTableRow>
@@ -37,21 +37,25 @@
             </table>
           </div>
         </hlm-card>
-        <hlm-card class="flex-column" style="flex:1">
+        <hlm-card class="panel flex-column">
           <hlm-card-header>
             <h1 style="font-size: 1rem;">Trend Data</h1>
             <hlm-separator />
           </hlm-card-header>
-          <tanstack-chart hlmChart [options]="_chartOptions" style="flex: 1;" />
+          <div class="panel-body chart-host" #trendChartHost>
+            <tanstack-chart hlmChart [options]="chartOptions()" />
+          </div>
         </hlm-card>
       </div>
-      <div class="flex-column" style="flex:1;align-items: center;">
-        <hlm-card style="width: 100%;flex: 1;">
+      <div class="content-right flex-column">
+        <hlm-card class="panel flex-column">
           <hlm-card-header>
             <h1 style="font-size: 1rem;">Temperatures</h1>
             <hlm-separator />
           </hlm-card-header>
-          <tanstack-chart hlmChart [options]="_chartOptionsBar" style="flex: 1;" />
+          <div class="panel-body chart-host" #barChartHost>
+            <tanstack-chart hlmChart [options]="barChartOptions()" />
+          </div>
         </hlm-card>
       </div>
     </div>

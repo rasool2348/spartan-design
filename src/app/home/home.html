@@ -1,4 +1,4 @@
-<div class="flex-row">
+<div class="page flex-row">
   <div hlmSidebarWrapper>
     <hlm-sidebar>
       <div hlmSidebarContent>
@@ -10,7 +10,7 @@
   </div>
   <div class="container">
     <button hlmSidebarTrigger></button>
-    <hlm-card class="header">
+    <hlm-card class="header shrink">
       <div class="header-row">
         <div hlmButtonGroup style="flex:1">
           <button hlmBtn variant="outline">Tundish Sequence</button>
@@ -80,7 +80,7 @@
         </div>
       </div>
     </hlm-card>
-    <hlm-card class="actions">
+    <hlm-card class="actions shrink">
       <button hlmBtn variant="outline" size="icon" class="button-warning">
         <ng-icon name="lucidePencil" />
       </button>
@@ -105,17 +105,16 @@
           <input hlmInput type="text" value="1521459" />
         </div>
       </div>
-
     </hlm-card>
 
-    <div class="flex-row">
-      <div class="flex-column" style="flex:10;row-gap: var(--gap);">
-        <hlm-card>
+    <div class="main flex-row">
+      <div class="main-left flex-column">
+        <hlm-card class="panel flex-column">
           <hlm-card-header>
             <h1 style="font-size: 1rem;">Planned Heats</h1>
             <hlm-separator />
           </hlm-card-header>
-          <div hlmTableContainer style="max-height: 150px;overflow-y: scroll;">
+          <div hlmTableContainer class="panel-body table-scroll">
             <table hlmTable>
               <thead hlmTableHeader class="sticky top-0 z-10" style="background-color: var(--table-header-background);">
                 <tr hlmTableRow>
@@ -146,13 +145,13 @@
             </table>
           </div>
         </hlm-card>
-        <div class="flex-row" style="column-gap: var(--gap);">
-          <hlm-card style="flex:1">
+        <div class="bottom-row flex-row">
+          <hlm-card class="panel actions-panel flex-column">
             <hlm-card-header>
               <h1 style="font-size: 1rem;">Actions</h1>
               <hlm-separator />
             </hlm-card-header>
-            <div class="flex-column" style="row-gap: var(--gap);padding: var(--gap);">
+            <div class="panel-body actions-body flex-column">
               <div class="flex-row" style="column-gap: var(--gap);">
                 <hlm-select style="flex:1">
                   <hlm-select-trigger>
@@ -183,9 +182,8 @@
               </div>
               <button hlmBtn variant="outline" class="button-danger">Reset Sequence</button>
             </div>
-
           </hlm-card>
-          <hlm-card style="flex:4">
+          <hlm-card class="panel sequence-panel flex-column">
             <hlm-card-header>
               <div class="flex-row" style="justify-content: space-between;">
                 <h1 style="font-size: 1rem;">Sequence Heats</h1>
@@ -194,10 +192,9 @@
                   Go on Current Heat
                 </label>
               </div>
-
               <hlm-separator />
             </hlm-card-header>
-            <div hlmTableContainer style="max-height: 150px;overflow-y: scroll;">
+            <div hlmTableContainer class="panel-body table-scroll">
               <table hlmTable>
                 <thead hlmTableHeader class="sticky top-0 z-10"
                   style="background-color: var(--table-header-background);">
@@ -230,13 +227,13 @@
           </hlm-card>
         </div>
       </div>
-      <div class="flex-column" style="flex:1;align-items: center;">
+      <div class="main-right flex-column">
         <label hlmLabel for="volume">Ladle 500 Ton</label>
         <hlm-slider id="volume" [value]="[50]" [showTicks]="true" [disabled]="true" orientation="vertical" />
-
       </div>
     </div>
-    <hlm-card class="header">
+
+    <hlm-card class="header footer shrink">
       <div class="header-row">
         <div hlmButtonGroup style="flex:1">
           <button hlmBtn variant="outline">Heat Number</button>

@@ -12,66 +12,138 @@
   row-gap: var(--gap);
 }
 
-.flex-row{
+.flex-row {
   @include flex-row;
 }
 
-.flex-column{
+.flex-column {
   @include flex-column;
 }
 
-.flex-padding{
+.flex-padding {
   padding: var(--gap);
+}
+
+:host {
+  display: block;
+  height: 100dvh;
+  max-height: 100dvh;
+  overflow: hidden;
+}
+
+.page {
+  height: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  min-height: 0;
 }
 
 .container {
   @include flex-column;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  max-height: 100%;
+  overflow: hidden;
   padding: var(--gap);
   max-width: 100%;
   width: 100%;
+  z-index: 0;
+
+  > button[hlmSidebarTrigger] {
+    flex-shrink: 0;
+  }
+
   * {
     font-size: 1rem;
   }
+
   ng-icon {
     font-size: 1rem;
   }
+
   div[hlmButtonGroup] * {
     flex: 1;
     text-align: center;
   }
-  z-index: 0;
-  
 }
-.header {
-  padding: var(--gap);
-  @include flex-column;
-  &-row {
-    @include flex-row;
+
+.content {
+  flex: 1 1 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.content-left,
+.content-right {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.content-right {
+  align-items: stretch;
+}
+
+.panel {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 0;
+  min-height: 0;
+  overflow: hidden;
+  width: 100%;
+
+  hlm-card-header {
+    flex-shrink: 0;
   }
 }
-.actions {
-  padding: var(--gap);
-  @include flex-row;
-}
-.action-inputs{
-  @include flex-row;
-  justify-content: flex-end;
-}
-table{
-    th,td{
-        text-align: center;
-        padding: 0.2rem;
-        height: 0;
-    }
-    tr{
-        border-color: var(--border);
-    }
+
+.panel-body {
+  position: relative;
+  flex: 1 1 0;
+  min-height: 0;
+  overflow: hidden;
 }
 
-div[hlmSidebarWrapper]{
+.table-scroll {
+  overflow: auto;
+  height: 100%;
+}
+
+.chart-host {
+  /* independent CSS height so TanStack Charts can measure the container */
+  tanstack-chart {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+table {
+  th,
+  td {
+    text-align: center;
+    padding: 0.2rem;
+    height: 0;
+  }
+
+  tr {
+    border-color: var(--border);
+  }
+}
+
+div[hlmSidebarWrapper] {
   width: fit-content;
+  height: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
-::ng-deep tanstack-chart .ts-chart{
+::ng-deep tanstack-chart .ts-chart {
   outline: none !important;
 }

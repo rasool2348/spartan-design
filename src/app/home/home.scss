@@ -12,62 +12,178 @@
   row-gap: var(--gap);
 }
 
-.flex-row{
+.flex-row {
   @include flex-row;
 }
 
-.flex-column{
+.flex-column {
   @include flex-column;
 }
 
-.flex-padding{
+.flex-padding {
   padding: var(--gap);
+}
+
+:host {
+  display: block;
+  height: 100dvh;
+  max-height: 100dvh;
+  overflow: hidden;
+}
+
+.page {
+  height: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  min-height: 0;
 }
 
 .container {
   @include flex-column;
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  max-height: 100%;
+  overflow: hidden;
   padding: var(--gap);
   max-width: 100%;
   width: 100%;
+  z-index: 0;
+
+  > button[hlmSidebarTrigger] {
+    flex-shrink: 0;
+  }
+
   * {
     font-size: 1rem;
   }
+
   ng-icon {
     font-size: 1rem;
   }
+
   div[hlmButtonGroup] * {
     flex: 1;
     text-align: center;
   }
-  z-index: 0;
-  
 }
+
+.shrink {
+  flex-shrink: 0;
+}
+
 .header {
   padding: var(--gap);
   @include flex-column;
+
   &-row {
     @include flex-row;
   }
 }
+
 .actions {
   padding: var(--gap);
   @include flex-row;
 }
-.action-inputs{
+
+.action-inputs {
   @include flex-row;
   justify-content: flex-end;
 }
-table{
-    th,td{
-        text-align: center;
-        padding: 0.2rem;
-        height: 0;
-    }
-    tr{
-        border-color: var(--border);
-    }
+
+.main {
+  flex: 1 1 0;
+  min-height: 0;
+  overflow: hidden;
 }
 
-div[hlmSidebarWrapper]{
+.main-left {
+  flex: 10;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.main-right {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  align-items: center;
+
+  label {
+    flex-shrink: 0;
+  }
+
+  hlm-slider {
+    flex: 1 1 0;
+    min-height: 0;
+    height: 100%;
+  }
+}
+
+.bottom-row {
+  flex: 1 1 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.panel {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 0;
+  min-height: 0;
+  overflow: hidden;
+  width: 100%;
+
+  hlm-card-header {
+    flex-shrink: 0;
+  }
+}
+
+.actions-panel {
+  flex: 1;
+}
+
+.sequence-panel {
+  flex: 4;
+}
+
+.panel-body {
+  position: relative;
+  flex: 1 1 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.actions-body {
+  padding: var(--gap);
+  overflow: auto;
+}
+
+.table-scroll {
+  overflow: auto;
+  height: 100%;
+}
+
+table {
+  th,
+  td {
+    text-align: center;
+    padding: 0.2rem;
+    height: 0;
+  }
+
+  tr {
+    border-color: var(--border);
+  }
+}
+
+div[hlmSidebarWrapper] {
   width: fit-content;
+  height: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  flex-shrink: 0;
 }
