@@ -12,6 +12,7 @@
   "targets": {
     "build": {
       "executor": "@angular/build:application",
+      "dependsOn": [],
       "options": {
         "browser": "src/main.ts",
         "tsConfig": "tsconfig.app.json",

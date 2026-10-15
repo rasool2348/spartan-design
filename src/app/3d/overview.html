@@ -1,0 +1,119 @@
+<div class="page flex-row">
+  <div hlmSidebarWrapper>
+    <hlm-sidebar>
+      <div hlmSidebarContent>
+        <div hlmSidebarGroup>
+          <div hlmSidebarGroupLabel>Application</div>
+          <a class="nav-link" routerLink="/home">Home</a>
+          <a class="nav-link" routerLink="/overview">CCM Twin</a>
+          <a class="nav-link" routerLink="/trend">Trend</a>
+        </div>
+      </div>
+    </hlm-sidebar>
+  </div>
+
+  <div class="container twin">
+    <button hlmSidebarTrigger></button>
+
+    <hlm-card class="header shrink twin-header">
+      <div class="header-row twin-header-row">
+        <div class="title-block">
+          <h1>CCM Digital Twin</h1>
+          <p>Continuous casting overview · orbit · pan · zoom · click KPIs for info</p>
+        </div>
+        <div class="status-chips">
+          <span class="chip">Heat 92608161</span>
+          <span class="chip chip-ok">Casting On</span>
+          <span class="chip">Grade 3204</span>
+        </div>
+        <div class="header-actions">
+          <button hlmBtn variant="outline" type="button" (click)="resetCamera()">Reset view</button>
+          <button hlmBtn variant="outline" type="button" (click)="togglePause()">
+            {{ paused() ? 'Resume' : 'Pause' }}
+          </button>
+        </div>
+      </div>
+    </hlm-card>
+
+    <div class="twin-main">
+      <aside class="kpi-column glass-panel">
+        <h2>Live KPIs</h2>
+        @for (card of kpiCards(); track card.id) {
+          <button
+            type="button"
+            class="kpi-card"
+            [class.active]="selected() === card.id"
+            (click)="focusPart(card.id)"
+          >
+            <div class="kpi-title">{{ card.title }}</div>
+          </button>
+        }
+      </aside>
+
+      <div class="twin-stage glass-panel">
+        <div #viewport class="viewport" role="img" aria-label="3D continuous casting digital twin"></div>
+
+        <div class="sequence-overlay" aria-label="Sequence Heats">
+          <div hlmTableContainer class="sequence-table">
+            <table hlmTable>
+              <thead hlmTableHeader style="background-color: var(--table-header-background)">
+                <tr hlmTableRow>
+                  @for (column of sequenceHeatsColumns; track column) {
+                    <th hlmTableHead>{{ column }}</th>
+                  }
+                </tr>
+              </thead>
+              <tbody hlmTableBody>
+                @for (row of sequenceHeatsRows; track $index; let i = $index) {
+                  <tr hlmTableRow [class.table-row-selected]="i === 1">
+                    <td hlmTableCell>{{ row.heatNumber }}</td>
+                    <td hlmTableCell>{{ row.heatStart }}</td>
+                    <td hlmTableCell>{{ row.heatEnd }}</td>
+                    <td hlmTableCell>{{ row.ladleArrival }}</td>
+                    <td hlmTableCell>{{ row.weightL1 }}</td>
+                    <td hlmTableCell>{{ row.seqOfTotalSeq }}</td>
+                    <td hlmTableCell>{{ row.weightHSTS }}</td>
+                    <td hlmTableCell>{{ row.steelGrade }}</td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="temp-chart-overlay" aria-label="Temperature vs time">
+          <div class="temp-chart-host" #tempChartHost>
+            <tanstack-chart hlmChart [options]="tempChartOptions()" />
+          </div>
+        </div>
+
+        @if (hovered(); as part) {
+          @for (k of [calloutKey()]; track k) {
+            <div
+              class="callout-cloud-puff"
+              [style.left.px]="calloutOrigin().x"
+              [style.top.px]="calloutOrigin().y"
+            ></div>
+            <div
+              class="callout callout-cloud"
+              [style.--from-x]="calloutFrom().x + 'px'"
+              [style.--from-y]="calloutFrom().y + 'px'"
+            >
+              <div class="callout-title">{{ part.title }}</div>
+              <div class="kpi-fields">
+                @for (field of part.fields; track field.label) {
+                  <div class="callout-row">
+                    <span>{{ field.label }}</span>
+                    <strong>{{ field.value }}</strong>
+                  </div>
+                }
+              </div>
+            </div>
+          }
+        }
+
+        <div class="viewport-hint">Drag to orbit · scroll zoom · click KPI for info</div>
+      </div>
+    </div>
+  </div>
+</div>
