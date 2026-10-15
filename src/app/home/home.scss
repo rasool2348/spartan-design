@@ -69,6 +69,20 @@
   }
 }
 
+.nav-link {
+  display: block;
+  padding: 0.4rem 0.75rem;
+  color: var(--muted-foreground);
+  text-decoration: none;
+  border-radius: var(--radius);
+
+  &:hover,
+  &.active {
+    color: var(--neon-cyan, #00e5ff);
+    background: rgba(0, 229, 255, 0.08);
+  }
+}
+
 .shrink {
   flex-shrink: 0;
 }

@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { Trend } from './trend/trend';
 import { Home } from './home/home';
+import { HomeV2 } from './home-v2/home-v2';
 import { Overview } from './3d/overview';
 import { PartPlaceholder } from './3d/part-placeholder';
 
@@ -13,6 +14,10 @@ export const routes: Routes = [
   {
     path: 'home',
     component: Home,
+  },
+  {
+    path: 'home-v2',
+    component: HomeV2,
   },
   {
     path: 'trend',

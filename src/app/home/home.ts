@@ -1,4 +1,5 @@
 import { Component, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { HlmCard, HlmCardImports } from '@spartan-ng/helm/card';
 import { HlmFieldImports } from '@spartan-ng/helm/field';
@@ -30,6 +31,7 @@ import { HlmSidebarImports } from '@spartan-ng/helm/sidebar';
     HlmLabel,
     HlmSwitch,
     HlmSidebarImports,
+    RouterLink,
   ],
   providers: [provideIcons({ lucidePencil, lucideCheck, lucideBan })],
   selector: 'app-home',

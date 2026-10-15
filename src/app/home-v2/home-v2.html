@@ -1,0 +1,233 @@
+<div class="page flex-row">
+  <div hlmSidebarWrapper>
+    <hlm-sidebar>
+      <div hlmSidebarContent>
+        <div hlmSidebarGroup>
+          <div hlmSidebarGroupLabel>Application</div>
+          <a class="nav-link" routerLink="/home">Home</a>
+          <a class="nav-link" routerLink="/home-v2">Home V2</a>
+          <a class="nav-link" routerLink="/overview">CCM Twin</a>
+          <a class="nav-link" routerLink="/trend">Trend</a>
+        </div>
+      </div>
+    </hlm-sidebar>
+  </div>
+
+  <div class="container">
+    <button hlmSidebarTrigger></button>
+
+    <div class="workspace">
+      <div class="main-stack flex-column">
+        <!-- Row 1: Info | Chart | 3D Model | Ladle -->
+        <div class="row-top">
+          <hlm-card class="top-cell footer-info">
+            <div class="footer-info-stack">
+              @for (field of footerFields; track field.label) {
+                <div hlmButtonGroup class="field-group footer-field">
+                  <button hlmBtn variant="outline" type="button" class="field-label">
+                    <span>{{ field.label }}</span>
+                  </button>
+                  <input hlmInput type="text" [value]="displayValue(field)" readonly />
+                </div>
+              }
+            </div>
+          </hlm-card>
+
+          <hlm-card class="top-cell temp-chart-panel">
+            <div class="temp-chart-title">
+              <ng-icon name="lucideThermometer" />
+              <span>Tundish Temperature (°C)</span>
+            </div>
+            <div class="temp-chart-host" #tempChartHost>
+              <tanstack-chart hlmChart [options]="tempChartOptions()" />
+            </div>
+          </hlm-card>
+
+          <div class="top-cell twin-hero glass-panel">
+            <div #viewport class="twin-viewport" role="img" aria-label="CCM digital twin"></div>
+            <div class="hud-topbar">
+              <span class="hud-badge">Heat {{ headerRow1[1].value }}</span>
+              <span class="hud-badge hud-badge-ok">{{ headerRow1[4].value }}</span>
+              <span class="hud-badge">Grade {{ headerRow1[3].value }}</span>
+            </div>
+          </div>
+
+          <div class="top-cell ladle-strip flex-column glass-panel">
+            <label hlmLabel for="volume">Ladle 500 t</label>
+            <hlm-slider id="volume" [value]="[50]" [showTicks]="true" [disabled]="true" orientation="vertical" />
+          </div>
+        </div>
+
+        <!-- Row 2: Plan Request + Sequence | Actions -->
+        <div class="row-mid">
+          <div class="sequence-main flex-column">
+            <hlm-card class="actions shrink">
+              <button hlmBtn variant="outline" size="icon" class="button-warning">
+                <ng-icon name="lucidePencil" />
+              </button>
+              <button hlmBtn variant="outline" size="icon" class="button-success">
+                <ng-icon name="lucideCheck" />
+              </button>
+              <button hlmBtn variant="outline" size="icon" class="button-danger">
+                <ng-icon name="lucideBan" />
+              </button>
+              <button hlmBtn variant="outline" class="button-primary">Plan Request</button>
+              <div class="action-inputs" style="flex: 1">
+                @for (field of actionFields; track field.label) {
+                  <div hlmButtonGroup class="field-group action-field">
+                    <button hlmBtn variant="outline" type="button" class="field-label">
+                      <span>{{ field.label }}</span>
+                    </button>
+                    <input hlmInput type="text" [value]="displayValue(field)" readonly />
+                  </div>
+                }
+              </div>
+            </hlm-card>
+
+            <hlm-card class="panel flex-column sequence-panel">
+              <hlm-card-header>
+                <div class="flex-row panel-title-row">
+                  <h1 style="font-size: 1rem">Sequence Heats</h1>
+                  <label class="flex items-center" hlmLabel>
+                    <hlm-switch class="mr-2" />
+                    Go on Current Heat
+                  </label>
+                </div>
+                <hlm-separator />
+              </hlm-card-header>
+              <div hlmTableContainer class="panel-body table-scroll">
+                <table hlmTable>
+                  <thead
+                    hlmTableHeader
+                    class="sticky top-0 z-10"
+                    style="background-color: var(--table-header-background)"
+                  >
+                    <tr hlmTableRow>
+                      @for (column of _sequenceHeatsColumns; track column) {
+                        <th hlmTableHead>{{ column }}</th>
+                      }
+                    </tr>
+                  </thead>
+                  <tbody hlmTableBody>
+                    @for (row of _sequenceHeatsRows; track $index; let i = $index) {
+                      <tr hlmTableRow [class.table-row-selected]="i === 1">
+                        <td hlmTableCell>{{ row.heatNumber }}</td>
+                        <td hlmTableCell>{{ row.heatStart }}</td>
+                        <td hlmTableCell>{{ row.heatEnd }}</td>
+                        <td hlmTableCell>{{ row.ladleArrival }}</td>
+                        <td hlmTableCell>{{ row.weightL1 }}</td>
+                        <td hlmTableCell>{{ row.seqOfTotalSeq }}</td>
+                        <td hlmTableCell>{{ row.weightHSTS }}</td>
+                        <td hlmTableCell>{{ row.steelGrade }}</td>
+                        <td hlmTableCell>
+                          <button hlmBtn variant="outline" [class.table-row-selected]="i === 1">MIS Info</button>
+                        </td>
+                        <td hlmTableCell>
+                          <button hlmBtn variant="outline" [class.table-row-selected]="i === 1">Default Heat</button>
+                        </td>
+                      </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </hlm-card>
+          </div>
+
+          <hlm-card class="sequence-actions flex-column">
+            <div class="panel-body actions-body flex-column">
+              <div class="flex-column" style="row-gap: var(--gap)">
+                <hlm-select>
+                  <hlm-select-trigger>
+                    <hlm-select-value placeholder="Ladle No" />
+                  </hlm-select-trigger>
+                  <hlm-select-content *hlmSelectPortal>
+                    <hlm-select-group>
+                      <hlm-select-label>Ladles</hlm-select-label>
+                      <hlm-select-item [value]="'1'">{{ 1 }}</hlm-select-item>
+                    </hlm-select-group>
+                  </hlm-select-content>
+                </hlm-select>
+                <hlm-select>
+                  <hlm-select-trigger>
+                    <hlm-select-value placeholder="Tundish No" />
+                  </hlm-select-trigger>
+                  <hlm-select-content *hlmSelectPortal>
+                    <hlm-select-group>
+                      <hlm-select-label>Tundish</hlm-select-label>
+                      <hlm-select-item [value]="'1'">{{ 1 }}</hlm-select-item>
+                    </hlm-select-group>
+                  </hlm-select-content>
+                </hlm-select>
+              </div>
+              <button hlmBtn variant="outline" class="button-success">Allocation</button>
+              <button hlmBtn variant="outline" class="button-warning">Update</button>
+              <button hlmBtn variant="outline" class="button-danger">Reset Sequence</button>
+            </div>
+          </hlm-card>
+        </div>
+
+        <!-- Row 3: Planned Heats full width -->
+        <div class="row-bottom">
+          <hlm-card class="panel flex-column planned-panel">
+            <hlm-card-header>
+              <h1 style="font-size: 1rem">Planned Heats</h1>
+              <hlm-separator />
+            </hlm-card-header>
+            <div hlmTableContainer class="panel-body table-scroll">
+              <table hlmTable>
+                <thead
+                  hlmTableHeader
+                  class="sticky top-0 z-10"
+                  style="background-color: var(--table-header-background)"
+                >
+                  <tr hlmTableRow>
+                    @for (column of _plannedHeatsColumns; track column) {
+                      <th hlmTableHead>{{ column }}</th>
+                    }
+                  </tr>
+                </thead>
+                <tbody hlmTableBody>
+                  @for (row of _plannedHeatsRows; track row.heatNumber) {
+                    <tr hlmTableRow>
+                      <td hlmTableCell>{{ row.heatNumber }}</td>
+                      <td hlmTableCell>{{ row.heatStatus }}</td>
+                      <td hlmTableCell>{{ row.stageName }}</td>
+                      <td hlmTableCell>{{ row.ladleEmptyWeight }}</td>
+                      <td hlmTableCell>{{ row.weightHSTS }}</td>
+                      <td hlmTableCell>{{ row.ladleCode }}</td>
+                      <td hlmTableCell>{{ row.steelGrade }}</td>
+                      <td hlmTableCell>{{ row.seqOfTotalSeq }}</td>
+                      <td hlmTableCell>{{ row.length }}</td>
+                      <td hlmTableCell>{{ row.width }}</td>
+                      <td hlmTableCell>{{ row.thickness }}</td>
+                      <td hlmTableCell>
+                        <button hlmBtn variant="outline" [disabled]="true">Target Temp</button>
+                      </td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+          </hlm-card>
+        </div>
+      </div>
+
+      <!-- Full-page-height process info rail -->
+      <aside class="process-info glass-panel">
+        <div class="process-info-grid">
+          @for (field of allHeaderFields; track field.label) {
+            <div class="process-info-item" [title]="field.label">
+              <span class="process-info-icon">
+                <ng-icon [name]="field.icon" />
+              </span>
+              <span class="process-info-text">
+                <span class="process-info-label">{{ field.label }}</span>
+                <span class="process-info-value">{{ displayValue(field) }}</span>
+              </span>
+            </div>
+          }
+        </div>
+      </aside>
+    </div>
+  </div>
+</div>
